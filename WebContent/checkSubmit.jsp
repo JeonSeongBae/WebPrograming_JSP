@@ -25,15 +25,17 @@
 		Pattern pattern = null;
 		Matcher matcher = null;
 
-		String checkEmail = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
-		String checkTelephone = "^01([0|1|6|7|8]?)-?([0-9]{3,4})-?([0-9]{4})$";
-		String checkName = "^[a-z가-힣]+$";
-		String checkPassword = "^[a-zA-Z0-9_]{6,10}$";
-		// 		String checkPassword = "^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$";
 		String checkID = "^[a-zA-Z0-9_]{6,10}$";
+		String checkPassword = "^[a-zA-Z0-9_]{6,10}$";
+		String checkName = "^[a-z가-힣]+$";
+		String checkTelephone = "^01([0|1|6|7|8]?)-?([0-9]{3,4})-?([0-9]{4})$";
+		String checkEmail = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+
+		// 		String checkPassword = "^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$";
+		// 		System.out.println("checkBox: " + Checkbox);
+		
 		pattern = Pattern.compile(checkEmail);
 		matcher = pattern.matcher(Email);
-		// 		System.out.println("checkBox: " + Checkbox);
 		if (!matcher.find()) { // 1. 이메일 확인
 			answer = "checkEmail";
 		}
@@ -63,10 +65,26 @@
 		}
 		if (Checkbox.equals("false")) { // 약관 동의 확인
 			answer = "checkCheckbox";
-			// 		System.out.println("들어옴 "+answer);
 		}
-		// 		System.out.println("answer: "+answer);
-		answer = "";
+		System.out.println(ID);
+		if (ID == "") {
+			answer = "blankID";
+		} else if (Password == "") {
+			answer = "blankPassword";
+		} else if (PasswordCheck == "") {
+			answer = "blankPasswordCheck";
+		} else if (Name == "") {
+			answer = "blankName";
+		} else if (Telephone == "") {
+			answer = "blankTelephone";
+		} else if (Email == "") {
+			answer = "blankEmail";
+		} else if (Birth == null) {
+			answer = "blankBirth";
+		}
+				System.out.println("answer: "+answer);
+		// 		answer = "";
+		
 		printWriter = response.getWriter();
 		printWriter.print(answer);
 		printWriter.flush();

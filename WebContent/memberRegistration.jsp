@@ -32,6 +32,7 @@
 				Checkbox : document.getElementById("Checkbox").checked,
 				ID : document.getElementById("ID").value,
 				Password : document.getElementById("Password").value,
+				PasswordCheck : document.getElementById("PasswordCheck").value,
 				Name : document.getElementById("Name").value,
 				Telephone : document.getElementById("Telephone").value,
 				Email : document.getElementById("Email").value,
@@ -43,21 +44,34 @@
 				} else if (response == "checkEmail") {
 					alert("checkEmail");
 				} else if (response == "checkTelephone") {
-					alert("checkTelephone");
+					alert("전화번호 형식을 지켜주세요.");
+					document.getElementById("Telephone").value = null;
 				} else if (response == "checkName") {
-					alert("checkName");
+					alert("이름은 문자열만 입력 가능합니다.");
+					document.getElementById("Name").value = null;
 				} else if (response == "checkPassword") {
 					alert("checkPassword");
 				} else if (response == "checkPasswordCheck") {
-					alert("checkPasswordCheck");
+					alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
+					document.getElementById("Password").value = null;
+					document.getElementById("PasswordCheck").value = null;
 				} else if (response == "checkID") {
 					alert("checkID");
-				} else if (response == "NOCHECKED") {
-					alert("NOCHECKED");
+				} else if (response == "blankEmail") {
+					alert("Email값이 없습니다.");
+				} else if (response == "blankTelephone") {
+					alert("전화번호값이 없습니다.");
+				} else if (response == "blankName") {
+					alert("이름값이 없습니다.");
+				} else if (response == "blankPassword") {
+					alert("비밀번호 확인값이 없습니다.");
+				} else if (response == "blankcheckPasswordCheck") {
+					alert("비밀번호값이 없습니다.");
+				} else if (response == "blankID") {
+					alert("ID값이 없습니다.");
 				} else {
 					createMember();
 				}
-				console.log(response);
 			}
 		})
 	}
@@ -132,12 +146,12 @@
 				</tr>
 				<tr>
 					<td>전화번호</td>
-					<td><input id="Telephone" class="eq_ptag" type="text"
+					<td><input id="Telephone" class="eq_ptag" type="tel"
 						name="name_Telephone" placeholder="ex)01(0)-000(0)-0000"><br></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input id="Email" class="eq_ptag" type="text"
+					<td><input id="Email" class="eq_ptag" type="email"
 						name="name_Email"><br></td>
 				</tr>
 				<tr>

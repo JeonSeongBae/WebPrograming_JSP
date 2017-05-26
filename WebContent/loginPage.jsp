@@ -7,24 +7,27 @@
 <script type="text/javascript">
 	function login() {
 		$.ajax({
-			type : 'post',
-			url : 'http://localhost:8080/HW1/checkLogin.jsp',
-			data : {
-				ID : document.getElementById("ID").value,
-				Password : document.getElementById("Password").value
-			},
-			success : function(response) {
-				if (response == "MATCH") {
-					alert("MATCH");
-					window.open('C:\\Users\\user\\Desktop\\웹프로그래밍\\TP1_201302476_전성배\\TP1_HTML_SKELETON.html')
-				} else if (response == "NOMATCH") {
-					alert("NOMATCH");
-				} else if (response == "NOTEXIST") {
-					alert("NOTEXIST");
-				}
-				console.log(response);
-			}
-		})
+					type : 'post',
+					url : 'http://localhost:8080/HW1/checkLogin.jsp',
+					data : {
+						ID : document.getElementById("ID").value,
+						Password : document.getElementById("Password").value
+					},
+					success : function(response) {
+						if (response == "MATCH") {
+							alert("MATCH");
+// 							openPage();
+							window.open('C:\\Users\\user\\Desktop\\웹프로그래밍\\TP1_201302476_전성배\\TP1_HTML_SKELETON.html')
+						} else if (response == "NOMATCH") {
+							alert("NOMATCH");
+						} else if (response == "NOTEXIST") {
+							alert("NOTEXIST");
+						}
+					}
+				})
+	}
+	function openPage(){
+		location.href='C:\\Users\\user\\Desktop\\웹프로그래밍\\TP1_201302476_전성배\\TP1_HTML_SKELETON.html'
 	}
 </script>
 <head>
@@ -50,11 +53,10 @@
 			</tbody>
 		</table>
 		<input type="button" name="name_Submit" value="로그인하기"
-			onclick="login()">
-			
-		<input type="button" name="name_Submit"
-			value="회원가입" onclick="window.open('http://localhost:8080/HW1/memberRegistration.jsp')">
-			
+			onclick="login()"> <input type="button" name="name_Submit"
+			value="회원가입"
+			onclick="window.open('http://localhost:8080/HW1/memberRegistration.jsp')">
+
 	</form>
 </body>
 </html>
