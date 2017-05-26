@@ -16,6 +16,7 @@
 			success : function(response) {
 				if (response == "MATCH") {
 					alert("MATCH");
+					window.open('C:\\Users\\user\\Desktop\\웹프로그래밍\\TP1_201302476_전성배\\TP1_HTML_SKELETON.html')
 				} else if (response == "NOMATCH") {
 					alert("NOMATCH");
 				} else if (response == "NOTEXIST") {
@@ -50,6 +51,10 @@
 		</table>
 		<input type="button" name="name_Submit" value="로그인하기"
 			onclick="login()">
+			
+		<input type="button" name="name_Submit"
+			value="회원가입" onclick="window.open('http://localhost:8080/HW1/memberRegistration.jsp')">
+			
 	</form>
 </body>
 </html>

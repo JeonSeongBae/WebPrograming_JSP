@@ -15,12 +15,12 @@
 			success : function(response) {
 				if (response == "POSSIBLE") {
 					alert("사용 가능한 ID입니다.");
+					document.getElementById("Password").focus();
 				} else if (response == "DUPLICATION") {
 					alert("이미 존재하는 ID입니다. 다른 ID를 입력해주세요.");
-				} else if (response == "NOTFORM") {
+				} else {
 					alert("형식에 맞지않는 ID입니다. 형식에 맞는 ID를 입력해주세요.");
 				}
-				console.log(response);
 			}
 		})
 	}
@@ -75,25 +75,11 @@
 				Birth : document.getElementById("Birth").value
 			},
 			success : function(response) {
-								if (response == "SUCESS") {
-									alert("SUCESS");
-								} else if (response == "FAIL") {
-									alert("FAIL");
-								} 
-// 								else if (response == "checkTelephone") {
-				// 					alert("checkTelephone");
-				// 				} else if (response == "checkName") {
-				// 					alert("checkName");
-				// 				} else if (response == "checkPassword") {
-				// 					alert("checkPassword");
-				// 				} else if (response == "checkID") {
-				// 					alert("checkID");
-				// 				} else if (response == "NOCHECKED") {
-				// 					alert("NOCHECKED");
-				// 				} else {
-				// 					createMember();
-				// 				}
-				// 				console.log(response);
+				if (response == "SUCESS") {
+					alert("SUCESS");
+				} else if (response == "FAIL") {
+					alert("FAIL");
+				}
 			}
 		})
 	}
