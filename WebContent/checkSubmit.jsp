@@ -1,8 +1,9 @@
+<%@page import="java.io.IOException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.regex.Matcher"%>
 <%@ page import="java.util.regex.Pattern"%>
-<%@ page import="java.io.*"%>
+<%@page import="java.io.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,29 +13,52 @@
 <body>
 	<%
 		String answer = "NOTFORM"; // 초기값 == 형식에 맞지 않음
+		PrintWriter printWriter;
+		String Checkbox = request.getParameter("Checkbox");
 		String ID = request.getParameter("ID");
+		String Password = request.getParameter("Password");
+		String Name = request.getParameter("Name");
+		String Telephone = request.getParameter("Telephone");
+		String Email = request.getParameter("Email");
+		String Birth = request.getParameter("Birth");
+		Pattern pattern = null;
+		Matcher matcher = null;
 
-		String filePath = application.getRealPath("IDDataBase//") + "\\";
-		File file = new File(filePath);
-		File[] files = file.listFiles();
-
-		String regExp = "^[a-zA-Z0-9_]{6,10}$";
-		Pattern pattern = Pattern.compile(regExp);
-		Matcher matcher = pattern.matcher(ID);
-		boolean checking = matcher.find(); // ID 형식을 확인함
-		// 			System.out.println("filePath: " + filePath);
-		// 			System.out.println(checking);
-		if (checking) {
-			answer = "POSSIBLE";
-			for (int i = 0; i < files.length; i++) {
-				if (files[i].getName().equals(ID + ".txt")) {
-					answer = "DUPLICATION";
-					break;
-				}
-				// 				System.out.println(i + "번째 파일: " + files[i].getName());
-			}
+		String checkEmail = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+		String checkTelephone = "^01([0|1|6|7|8]?)-?([0-9]{3,4})-?([0-9]{4})$";
+		String checkName = "^[a-z가-힣]+$";
+		String checkPassword = "^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$";
+		String checkID = "^[a-zA-Z0-9_]{6,10}$";
+		pattern = Pattern.compile(checkEmail);
+		matcher = pattern.matcher(Email);
+// 		System.out.println("checkBox: " + Checkbox);
+		if (!matcher.find()) { // 1. 이메일 확인
+			answer = "checkEmail";
 		}
-		PrintWriter printWriter = response.getWriter();
+		pattern = Pattern.compile(checkTelephone);
+		matcher = pattern.matcher(Telephone);
+		if (!matcher.find()) { // 2. 전화번호 확인
+			answer = "checkTelephone";
+		}
+		pattern = Pattern.compile(checkName);
+		matcher = pattern.matcher(Name);
+		if (!matcher.find()) { // 이름 확인
+			answer = "checkName";
+		}
+		pattern = Pattern.compile(checkPassword);
+		matcher = pattern.matcher(Password);
+		if (!matcher.find()) { // ID 확인
+			answer = "checkPassword";
+		}
+		pattern = Pattern.compile(checkID);
+		matcher = pattern.matcher(ID);
+		if (!matcher.find()) { // ID 확인
+			answer = "checkID";
+		}
+		if (!(Checkbox == "true")) { // 약관 동의 확인
+			answer = "checkCheckbox";
+		}
+		printWriter = response.getWriter();
 		printWriter.print(answer);
 		printWriter.flush();
 		printWriter.close();

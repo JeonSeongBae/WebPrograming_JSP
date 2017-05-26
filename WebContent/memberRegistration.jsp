@@ -5,10 +5,43 @@
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript">
+	function checkSubmit() {
+		$.ajax({
+			type : 'post',
+			url : 'http://localhost:8080/HW1/checkSubmit.jsp',
+			data : {
+				Checkbox : document.getElementById("Checkbox").checked,
+				ID : document.getElementById("ID").value,
+				Password : document.getElementById("Password").value,
+				Name : document.getElementById("Name").value,
+				Telephone : document.getElementById("Telephone").value,
+				Email : document.getElementById("Email").value,
+				Birth : document.getElementById("Birth").value
+			},
+			success : function(response) {
+				if (response == "checkCheckbox") {
+					alert("약관에 동의해주시기 바랍니다.");
+				} else if (response == "checkEmail") {
+					alert("checkEmail");
+				} else if (response == "checkTelephone") {
+					alert("checkTelephone");
+				} else if (response == "checkName") {
+					alert("checkName");
+				} else if (response == "checkPassword") {
+					alert("checkPassword");
+				} else if (response == "checkID") {
+					alert("checkID");
+				} else if (response == "NOCHECKED") {
+					alert("NOCHECKED");
+				}
+				console.log(response);
+			}
+		})
+	}
 	function checkID() {
 		$.ajax({
 			type : 'post',
-			url : 'http://localhost:8080/HW1/checkRegistration.jsp',
+			url : 'http://localhost:8080/HW1/checkID.jsp',
 			data : {
 				ID : document.getElementById("ID").value
 			},
@@ -24,37 +57,13 @@
 			}
 		})
 	}
-	function submit() {
-		$.ajax({
-			type : 'post',
-			url : 'http://localhost:8080/HW1/checkSubmit.jsp',
-			data : {
-				ID : document.getElementById("ID").value,
-				Password : document.getElementById("Password").value,
-				Name : document.getElementById("Name").value,
-				Telephone : document.getElementById("Telephone").value,
-				Email : document.getElementById("Email").value,
-				Birth : document.getElementById("Birth").value
-			},
-			success : function(response) {
-				if (response == "POSSIBLE") {
-					alert("POSSIBLE");
-				} else if (response == "DUPLICATION") {
-					alert("DUPLICATION");
-				} else if (response == "NOTFORM") {
-					alert("NOTFORM");
-				}
-				console.log(response);
-			}
-		})
-	}
 </script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>HW1_JSP_201302476_전성배</title>
 </head>
 <body>
-	<form action="./createMember.jsp" id="form_info">
+	<form id="form_info">
 		<table>
 			<thead></thead>
 			<tbody>
@@ -64,7 +73,8 @@
 					</td>
 				</tr>
 				<tr>
-					<th><input type="checkbox" name="agree">약관에 동의합니다.</th>
+					<th><input id="Checkbox" type="checkbox" name="agree">약관에
+						동의합니다.</th>
 				</tr>
 			</tbody>
 			<tfoot></tfoot>
@@ -75,14 +85,14 @@
 				<tr>
 					<td>ID</td>
 					<td><input id="ID" class="eq_ptag" type="text" name="name_ID"
-						value=""><br></td>
+						placeholder="문자 or 숫자"><br></td>
 					<td><input type="button" name="name_Check" value="중복체크"
 						onclick="checkID()"></td>
 				</tr>
 				<tr>
 					<td>Password</td>
 					<td><input id="Password" class="eq_ptag" type="text"
-						name="name_Password"><br></td>
+						name="name_Password" placeholder="문자+숫자, 8자리 이상"><br></td>
 				</tr>
 				<tr>
 					<td>Password 확인</td>
@@ -92,12 +102,12 @@
 				<tr>
 					<td>이름</td>
 					<td><input id="Name" class="eq_ptag" type="text"
-						name="name_Name"><br></td>
+						name="name_Name" placeholder="문자열만 입력 가능"><br></td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
 					<td><input id="Telephone" class="eq_ptag" type="text"
-						name="name_Telephone"><br></td>
+						name="name_Telephone" placeholder="ex)01(0)-000(0)-0000"><br></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
@@ -110,8 +120,11 @@
 						name="name_Birth"><br></td>
 				</tr>
 			</tbody>
+			<tfoot>
+				<td><input type="button" name="name_Check" value="제출하기"
+					onclick="checkSubmit()"></td>
+			</tfoot>
 		</table>
-		<input type="button" name="name_Check" value="제출하기" onclick="submit()">
 
 	</form>
 </body>

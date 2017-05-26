@@ -1,7 +1,6 @@
 <%@page import="java.io.IOException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@page import="java.io.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,8 +11,9 @@
 <body>
 	<%
 		// 각각의 정보를 받아옴
+		String answer = "POSSIBLE";
 		String name_ID = request.getParameter("name_ID");
-		System.out.println("여기다여기!"+name_ID);
+		System.out.println("여기다여기!" + name_ID);
 		String name_Password = request.getParameter("name_Password");
 		String name_PasswordCheck = request.getParameter("name_PasswordCheck");
 		String name_Name = request.getParameter("name_Name");
@@ -45,6 +45,10 @@
 		} catch (IOException e) {
 			System.out.println(e.toString());
 		}
+		PrintWriter printWriter = response.getWriter();
+		printWriter.print(answer);
+		printWriter.flush();
+		printWriter.close();
 	%>
 </body>
 </html>

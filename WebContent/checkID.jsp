@@ -18,13 +18,13 @@
 		File file = new File(filePath);
 		File[] files = file.listFiles();
 
-		String regExp = "^[a-zA-Z0-9_]{6,10}$";
-		Pattern pattern = Pattern.compile(regExp);
+		String checkName = "^[a-zA-Z0-9_]{6,10}$";
+		Pattern pattern = Pattern.compile(checkName);
 		Matcher matcher = pattern.matcher(ID);
-		boolean checking = matcher.find(); // ID 형식을 확인함
+// 		boolean checking = matcher.find(); // ID 형식을 확인함
 		// 			System.out.println("filePath: " + filePath);
 		// 			System.out.println(checking);
-		if (checking) {
+		if (matcher.find()) { // ID 형식을 확인함
 			answer = "POSSIBLE";
 			for (int i = 0; i < files.length; i++) {
 				if (files[i].getName().equals(ID + ".txt")) {
