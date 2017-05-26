@@ -27,7 +27,7 @@
 	function submit() {
 		$.ajax({
 			type : 'post',
-			url : 'http://localhost:8080/HW1/checkRegistration.jsp',
+			url : 'http://localhost:8080/HW1/checkSubmit.jsp',
 			data : {
 				ID : document.getElementById("ID").value,
 				Password : document.getElementById("Password").value,
