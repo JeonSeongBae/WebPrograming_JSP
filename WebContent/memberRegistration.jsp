@@ -5,40 +5,7 @@
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript">
-	function checkSubmit() {
-		$.ajax({
-			type : 'post',
-			url : 'http://localhost:8080/HW1/checkSubmit.jsp',
-			data : {
-				Checkbox : document.getElementById("Checkbox").checked,
-				ID : document.getElementById("ID").value,
-				Password : document.getElementById("Password").value,
-				Name : document.getElementById("Name").value,
-				Telephone : document.getElementById("Telephone").value,
-				Email : document.getElementById("Email").value,
-				Birth : document.getElementById("Birth").value
-			},
-			success : function(response) {
-				if (response == "checkCheckbox") {
-					alert("약관에 동의해주시기 바랍니다.");
-				} else if (response == "checkEmail") {
-					alert("checkEmail");
-				} else if (response == "checkTelephone") {
-					alert("checkTelephone");
-				} else if (response == "checkName") {
-					alert("checkName");
-				} else if (response == "checkPassword") {
-					alert("checkPassword");
-				} else if (response == "checkID") {
-					alert("checkID");
-				} else if (response == "NOCHECKED") {
-					alert("NOCHECKED");
-				}
-				console.log(response);
-			}
-		})
-	}
-	function checkID() {
+	function checkID() { // 중복체크
 		$.ajax({
 			type : 'post',
 			url : 'http://localhost:8080/HW1/checkID.jsp',
@@ -54,6 +21,79 @@
 					alert("형식에 맞지않는 ID입니다. 형식에 맞는 ID를 입력해주세요.");
 				}
 				console.log(response);
+			}
+		})
+	}
+	function checkSubmit() { // 제출하기
+		$.ajax({
+			type : 'post',
+			url : 'http://localhost:8080/HW1/checkSubmit.jsp',
+			data : {
+				Checkbox : document.getElementById("Checkbox").checked,
+				ID : document.getElementById("ID").value,
+				Password : document.getElementById("Password").value,
+				Name : document.getElementById("Name").value,
+				Telephone : document.getElementById("Telephone").value,
+				Email : document.getElementById("Email").value,
+				Birth : document.getElementById("Birth").value
+			},
+			success : function(response) {
+				if (response == "checkCheckbox") {
+					alert("약관에 동의해주시기 바랍니다.!!");
+				} else if (response == "checkEmail") {
+					alert("checkEmail");
+				} else if (response == "checkTelephone") {
+					alert("checkTelephone");
+				} else if (response == "checkName") {
+					alert("checkName");
+				} else if (response == "checkPassword") {
+					alert("checkPassword");
+				} else if (response == "checkPasswordCheck") {
+					alert("checkPasswordCheck");
+				} else if (response == "checkID") {
+					alert("checkID");
+				} else if (response == "NOCHECKED") {
+					alert("NOCHECKED");
+				} else {
+					createMember();
+				}
+				console.log(response);
+			}
+		})
+	}
+	function createMember() { // 계정생성
+		$.ajax({
+			type : 'post',
+			url : 'http://localhost:8080/HW1/createMember.jsp',
+			data : {
+				Checkbox : document.getElementById("Checkbox").checked,
+				ID : document.getElementById("ID").value,
+				Password : document.getElementById("Password").value,
+				Name : document.getElementById("Name").value,
+				Telephone : document.getElementById("Telephone").value,
+				Email : document.getElementById("Email").value,
+				Birth : document.getElementById("Birth").value
+			},
+			success : function(response) {
+								if (response == "SUCESS") {
+									alert("SUCESS");
+								} else if (response == "FAIL") {
+									alert("FAIL");
+								} 
+// 								else if (response == "checkTelephone") {
+				// 					alert("checkTelephone");
+				// 				} else if (response == "checkName") {
+				// 					alert("checkName");
+				// 				} else if (response == "checkPassword") {
+				// 					alert("checkPassword");
+				// 				} else if (response == "checkID") {
+				// 					alert("checkID");
+				// 				} else if (response == "NOCHECKED") {
+				// 					alert("NOCHECKED");
+				// 				} else {
+				// 					createMember();
+				// 				}
+				// 				console.log(response);
 			}
 		})
 	}
