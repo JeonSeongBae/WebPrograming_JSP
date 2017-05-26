@@ -33,7 +33,7 @@
 
 		// 		String checkPassword = "^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$";
 		// 		System.out.println("checkBox: " + Checkbox);
-		
+
 		pattern = Pattern.compile(checkEmail);
 		matcher = pattern.matcher(Email);
 		if (!matcher.find()) { // 1. 이메일 확인
@@ -55,7 +55,7 @@
 		if (!matcher.find()) { // 비밀번호 확인
 			answer = "checkPassword";
 		}
-		if (Password.equals(PasswordCheck)) { // 비밀번호확인 확인
+		if (!Password.equals(PasswordCheck)) { // 비밀번호확인 확인
 			answer = "checkPasswordCheck";
 		}
 		pattern = Pattern.compile(checkID);
@@ -66,7 +66,7 @@
 		if (Checkbox.equals("false")) { // 약관 동의 확인
 			answer = "checkCheckbox";
 		}
-		System.out.println(ID);
+		System.out.println(Birth);
 		if (ID == "") {
 			answer = "blankID";
 		} else if (Password == "") {
@@ -79,12 +79,10 @@
 			answer = "blankTelephone";
 		} else if (Email == "") {
 			answer = "blankEmail";
-		} else if (Birth == null) {
+		} else if (Birth == "") {
 			answer = "blankBirth";
 		}
-				System.out.println("answer: "+answer);
-		// 		answer = "";
-		
+		System.out.println("answer: " + answer);
 		printWriter = response.getWriter();
 		printWriter.print(answer);
 		printWriter.flush();

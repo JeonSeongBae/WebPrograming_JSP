@@ -28,12 +28,12 @@
 			String line = null;
 			for (int i = 0; i < files.length; i++) {
 				if (files[i].getName().equals(ID + ".txt")) { // 일치하는 파일을 찾았을 경우
-					bufferedReader.readLine(); // ID를 읽는 부분
+// 					bufferedReader.readLine(); // ID를 읽는 부분
 					// 					System.out.println("여기: "+bufferedReader.readLine());
-					line = bufferedReader.readLine(); // Password를 읽는 부분
+// 					line = bufferedReader.readLine(); // Password를 읽는 부분
 					// 					System.out.println("line: " + line);
 					// 					System.out.println("Password: " + line);
-					if (Password.equals(line)) {
+					if (Password.equals(bufferedReader.readLine())) {
 						answer = "MATCH";
 					}
 				}

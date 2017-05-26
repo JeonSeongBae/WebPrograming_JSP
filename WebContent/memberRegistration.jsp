@@ -59,18 +59,21 @@
 					alert("checkID");
 				} else if (response == "blankEmail") {
 					alert("Email값이 없습니다.");
+				}else if (response == "blankBirth") {
+					alert("Birth값이 없습니다.");
 				} else if (response == "blankTelephone") {
 					alert("전화번호값이 없습니다.");
 				} else if (response == "blankName") {
 					alert("이름값이 없습니다.");
 				} else if (response == "blankPassword") {
-					alert("비밀번호 확인값이 없습니다.");
-				} else if (response == "blankcheckPasswordCheck") {
 					alert("비밀번호값이 없습니다.");
+				} else if (response == "blankcheckPasswordCheck") {
+					alert("비밀번호 확인값이 없습니다.");
 				} else if (response == "blankID") {
 					alert("ID값이 없습니다.");
 				} else {
 					createMember();
+					window.open('http://localhost:8080/HW1/loginPage.jsp')
 				}
 			}
 		})
@@ -91,6 +94,7 @@
 			success : function(response) {
 				if (response == "SUCESS") {
 					alert("SUCESS");
+					
 				} else if (response == "FAIL") {
 					alert("FAIL");
 				}
@@ -103,7 +107,7 @@
 <title>HW1_JSP_201302476_전성배</title>
 </head>
 <body>
-	<form id="form_info">
+	<form action="" id="form_info">
 		<table>
 			<thead></thead>
 			<tbody>
@@ -125,44 +129,44 @@
 				<tr>
 					<td>ID</td>
 					<td><input id="ID" class="eq_ptag" type="text" name="name_ID"
-						placeholder="문자 or 숫자"><br></td>
+						placeholder="문자 or 숫자" required><br></td>
 					<td><input type="button" name="name_Check" value="중복체크"
-						onclick="checkID()"></td>
+						onclick="checkID()" required></td>
 				</tr>
 				<tr>
 					<td>Password</td>
 					<td><input id="Password" class="eq_ptag" type="text"
-						name="name_Password" placeholder="문자+숫자, 8자리 이상"><br></td>
+						name="name_Password" placeholder="문자+숫자, 8자리 이상" required><br></td>
 				</tr>
 				<tr>
 					<td>Password 확인</td>
 					<td><input id="PasswordCheck" class="eq_ptag" type="text"
-						name="name_PasswordCheck"><br></td>
+						name="name_PasswordCheck" required><br></td>
 				</tr>
 				<tr>
 					<td>이름</td>
 					<td><input id="Name" class="eq_ptag" type="text"
-						name="name_Name" placeholder="문자열만 입력 가능"><br></td>
+						name="name_Name" placeholder="문자열만 입력 가능" required><br></td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
 					<td><input id="Telephone" class="eq_ptag" type="tel"
-						name="name_Telephone" placeholder="ex)01(0)-000(0)-0000"><br></td>
+						name="name_Telephone" placeholder="ex)01(0)-000(0)-0000" required><br></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
 					<td><input id="Email" class="eq_ptag" type="email"
-						name="name_Email"><br></td>
+						name="name_Email" required><br></td>
 				</tr>
 				<tr>
 					<td>생년월일</td>
 					<td><input id="Birth" class="eq_ptag" type="date"
-						name="name_Birth"><br></td>
+						name="name_Birth" required><br></td>
 				</tr>
 			</tbody>
 			<tfoot>
 				<td><input type="button" name="name_Check" value="제출하기"
-					onclick="checkSubmit()"></td>
+					onclick="checkSubmit()" required></td>
 			</tfoot>
 		</table>
 

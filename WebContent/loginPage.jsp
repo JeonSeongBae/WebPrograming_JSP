@@ -17,11 +17,11 @@
 						if (response == "MATCH") {
 							alert("MATCH");
 // 							openPage();
-							window.open('C:\\Users\\user\\Desktop\\웹프로그래밍\\TP1_201302476_전성배\\TP1_HTML_SKELETON.html')
+							location.href('C:\\Users\\user\\Desktop\\웹프로그래밍\\TP1_201302476_전성배\\TP1_HTML_SKELETON.html')
 						} else if (response == "NOMATCH") {
-							alert("NOMATCH");
+							alert("비밀번호가 일치하지 않습니다.");
 						} else if (response == "NOTEXIST") {
-							alert("NOTEXIST");
+							alert("아이디가 존재하지 않습니다.");
 						}
 					}
 				})
@@ -56,7 +56,6 @@
 			onclick="login()"> <input type="button" name="name_Submit"
 			value="회원가입"
 			onclick="window.open('http://localhost:8080/HW1/memberRegistration.jsp')">
-
 	</form>
 </body>
 </html>

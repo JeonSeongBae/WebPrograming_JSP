@@ -31,7 +31,7 @@
 			newfile.createNewFile();
 			// 파일 스기
 			FileWriter fileWriter = new FileWriter(filePath);
-			fileWriter.write(ID + "\n");
+// 			fileWriter.write(ID + "\n");
 			fileWriter.write(Password + "\n");
 			fileWriter.write(PasswordCheck + "\n");
 			fileWriter.write(Name + "\n");
