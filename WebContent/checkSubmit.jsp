@@ -1,8 +1,8 @@
 <%@page import="java.io.IOException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.regex.Matcher"%>
-<%@ page import="java.util.regex.Pattern"%>
+				<%@ page import="java.util.regex.Matcher"%>
+				<%@ page import="java.util.regex.Pattern"%>
 <%@page import="java.io.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,12 +26,12 @@
 		Matcher matcher = null;
 
 		String checkID = "^[a-zA-Z0-9_]{6,10}$";
-		String checkPassword = "^[a-zA-Z0-9_]{6,10}$";
+// 		String checkPassword = "^[a-zA-Z0-9_]{6,10}$";
+		String checkPassword = "^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$";
 		String checkName = "^[a-z가-힣]+$";
 		String checkTelephone = "^01([0|1|6|7|8]?)-?([0-9]{3,4})-?([0-9]{4})$";
 		String checkEmail = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
 
-		// 		String checkPassword = "^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$";
 		// 		System.out.println("checkBox: " + Checkbox);
 
 		pattern = Pattern.compile(checkEmail);

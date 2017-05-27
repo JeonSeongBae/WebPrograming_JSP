@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -17,21 +17,21 @@
 						if (response == "MATCH") {
 							alert("MATCH");
 // 							openPage();
-							location.href('C:\\Users\\user\\Desktop\\À¥ÇÁ·Î±×·¡¹Ö\\TP1_201302476_Àü¼º¹è\\TP1_HTML_SKELETON.html')
+							location.href('C:\\Users\\user\\Desktop\\ì›¹í”„ë¡œê·¸ë˜ë°\\TP1_201302476_ì „ì„±ë°°\\TP1_HTML_SKELETON.html')
 						} else if (response == "NOMATCH") {
-							alert("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+							alert("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 						} else if (response == "NOTEXIST") {
-							alert("¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+							alert("ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 						}
 					}
 				})
 	}
 	function openPage(){
-		location.href='C:\\Users\\user\\Desktop\\À¥ÇÁ·Î±×·¡¹Ö\\TP1_201302476_Àü¼º¹è\\TP1_HTML_SKELETON.html'
+		location.href='C:\\Users\\user\\Desktop\\ì›¹í”„ë¡œê·¸ë˜ë°\\TP1_201302476_ì „ì„±ë°°\\TP1_HTML_SKELETON.html'
 	}
 </script>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -52,9 +52,9 @@
 				</tr>
 			</tbody>
 		</table>
-		<input type="button" name="name_Submit" value="·Î±×ÀÎÇÏ±â"
+		<input type="button" name="name_Submit" value="ë¡œê·¸ì¸í•˜ê¸°"
 			onclick="login()"> <input type="button" name="name_Submit"
-			value="È¸¿ø°¡ÀÔ"
+			value="íšŒì›ê°€ì…"
 			onclick="window.open('http://localhost:8080/HW1/memberRegistration.jsp')">
 	</form>
 </body>
