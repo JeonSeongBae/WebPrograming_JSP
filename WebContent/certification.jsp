@@ -14,28 +14,20 @@
 		// 각각의 정보를 받아옴
 		String answer = "";
 		String ID = request.getParameter("ID");
-		String Password = request.getParameter("Password");
-		String saveFolder = "C:\\Users\\user\\Desktop" + "\\";
-		File targetDir = new File(saveFolder);
-		String Name = request.getParameter("Name");
-		String Telephone = request.getParameter("Telephone");
-		String Email = request.getParameter("Email");
-		String Birth = request.getParameter("Birth");
 		String fileName = ID + ".txt"; // 파일 이름
-		String filePath = application.getRealPath("WEB-INF/IDDataBase_certification/")+"\\"; // 저장될 위치
+		String filePath = application.getRealPath("WEB-INF/IDDataBase/") + "\\"; // 불러올 위치
+		File file = new File(filePath);
+		File[] files = file.listFiles();
 		try {
-			// 파일 생성
-			File newfile = new File(filePath);
-			newfile.createNewFile();
-			// 파일 쓰기
-			FileWriter fileWriter = new FileWriter(filePath + fileName);
-			fileWriter.write(Password + "\n");
-			fileWriter.write(Name + "\n");
-			fileWriter.write(Email + "\n");
-			fileWriter.write(Birth + "\n");
-			fileWriter.close();
-			answer = "SUCESS";
-		} catch (IOException e) {
+			for (int i = 0; i < files.length; i++) {
+				if (files[i].getName().equals(ID + ".txt")) {//그 디렉토리에 있는 파일 중 전달받은 id와 같은 이름의 파일이 있을 경우
+					File tempFile = files[i];
+					File newfile = new File(application.getRealPath("/WEB-INF/IDDataBase_certification/" + ID + ".txt"));
+					tempFile.renameTo(newfile);
+				}
+			}
+		}
+		catch (Exception e) {
 			answer = "FAIL";
 		} finally {
 			PrintWriter printWriter = response.getWriter();

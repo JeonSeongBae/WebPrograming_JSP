@@ -156,7 +156,7 @@
 						alert("ID값이 없습니다.");
 					} else {
 						createMember();
-						window.open('http://localhost:8080/HW1/loginPage.jsp')
+						location.href="http://localhost:8080/HW1/loginPage.jsp";
 					}
 				}
 			})
@@ -177,19 +177,15 @@
 				success : function(response) {
 					if (response == "SUCESS") {
 						alert("계정을 생성하였습니다. 이메일 인증을 받으세요.");
-						send_email();
+						alert("1");
+						location.href="http://localhost:8080/HW1/send_email.jsp?ID="+document.getElementById("ID").value + "&Email=" + document.getElementById("Email").value;
+						alert("2");
 					} else {
 						alert("계정생성에 실패하였습니다.");
 					}
 				}
 			})
 		}
-		function send_email() {
-			alert(document.getElementById("Email").value);
-			location.href = "http://localhost:8080/HW1/send_email.jsp?ID="+document.getElementById("ID").value + "&Email=" + document.getElementById("Email").value;
-		}
 	</script>
-	
 </body>
-
 </html>
