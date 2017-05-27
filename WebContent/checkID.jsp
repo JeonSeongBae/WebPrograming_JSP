@@ -21,9 +21,6 @@
 		String checkName = "^[a-zA-Z0-9_]{6,10}$";
 		Pattern pattern = Pattern.compile(checkName);
 		Matcher matcher = pattern.matcher(ID);
-// 		boolean checking = matcher.find(); // ID 형식을 확인함
-		// 			System.out.println("filePath: " + filePath);
-		// 			System.out.println(checking);
 		if (matcher.find()) { // ID 형식을 확인함
 			answer = "POSSIBLE";
 			for (int i = 0; i < files.length; i++) {
@@ -31,7 +28,6 @@
 					answer = "DUPLICATION";
 					break;
 				}
-				// 				System.out.println(i + "번째 파일: " + files[i].getName());
 			}
 		}
 		PrintWriter printWriter = response.getWriter();
