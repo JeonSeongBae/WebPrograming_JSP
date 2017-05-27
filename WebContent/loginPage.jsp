@@ -46,7 +46,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<input type="button" name="name_Submit" value="로그인하기" onclick="login()"> <input type="button" name="name_Submit" value="회원가입" onclick="window.open('http://localhost:8080/HW1/memberRegistration.jsp')">
+		<input type="button" name="name_Submit" value="로그인하기" onclick="login()"> <input type="button" name="name_Submit" value="회원가입" onclick="location.href('http://localhost:8080/HW1/memberRegistration.jsp')">
 	</form>
 </body>
 </html>

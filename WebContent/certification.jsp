@@ -22,7 +22,7 @@
 		String Email = request.getParameter("Email");
 		String Birth = request.getParameter("Birth");
 		String fileName = ID + ".txt"; // 파일 이름
-		String filePath = application.getRealPath("WEB-INF/IDDataBase/")+"\\"; // 저장될 위치
+		String filePath = application.getRealPath("WEB-INF/IDDataBase_certification/")+"\\"; // 저장될 위치
 		try {
 			// 파일 생성
 			File newfile = new File(filePath);
