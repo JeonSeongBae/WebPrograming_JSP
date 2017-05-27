@@ -24,24 +24,21 @@
 		String Email = request.getParameter("Email");
 		String Birth = request.getParameter("Birth");
 		String fileName = ID + ".txt"; // 파일 이름
-		String filePath = application.getRealPath("IDDataBase//" + "//" + fileName); // 저장될 위치
+// 		String filePath = application.getRealPath("") + "\\"; // 저장될 위치
+		String filePath = "C:\\Users\\user\\Desktop" + "\\"; // 저장될 위치
+
+		System.out.println(filePath);
 		try {
 			// 파일 생성
 			File newfile = new File(filePath);
 			newfile.createNewFile();
-			// 파일 스기
-			FileWriter fileWriter = new FileWriter(filePath);
+			// 파일 쓰기
+			FileWriter fileWriter = new FileWriter(filePath + fileName);
 			fileWriter.write(Password + "\n");
 			fileWriter.write(Name + "\n");
 			fileWriter.write(Email + "\n");
 			fileWriter.write(Birth + "\n");
 			fileWriter.close();
-			FileReader fr = new FileReader(filePath); //파일읽기객체생성
-			BufferedReader br = new BufferedReader(fr); //버퍼리더객체생성
-			String line = null;
-			while ((line = br.readLine()) != null) { //라인단위 읽기
-				out.println(line + "<br>");
-			}
 			answer = "SUCESS";
 		} catch (IOException e) {
 			answer = "FAIL";

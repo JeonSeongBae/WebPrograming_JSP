@@ -38,20 +38,15 @@
 			<tbody>
 				<tr>
 					<td>ID</td>
-					<td><input id="ID" class="eq_ptag" type="text" name="name_ID"
-						value=""><br></td>
+					<td><input id="ID" class="eq_ptag" type="text" name="name_ID" value=""><br></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input id="Password" class="eq_ptag" type="text"
-						name="name_Password"><br></td>
+					<td><input id="Password" class="eq_ptag" type="text" name="name_Password"><br></td>
 				</tr>
 			</tbody>
 		</table>
-		<input type="button" name="name_Submit" value="로그인하기"
-			onclick="login()"> <input type="button" name="name_Submit"
-			value="회원가입"
-			onclick="window.open('http://localhost:8080/HW1/memberRegistration.jsp')">
+		<input type="button" name="name_Submit" value="로그인하기" onclick="login()"> <input type="button" name="name_Submit" value="회원가입" onclick="window.open('http://localhost:8080/HW1/memberRegistration.jsp')">
 	</form>
 </body>
 </html>

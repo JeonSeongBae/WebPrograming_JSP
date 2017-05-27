@@ -29,45 +29,36 @@
 			<tbody>
 				<tr>
 					<td>ID</td>
-					<td><input id="ID" class="dataInfo" type="text" name="name_ID"
-						placeholder="문자 or 숫자" required><br></td>
-					<td><input type="button" name="name_Check" value="중복체크"
-						onclick="checkID()" required></td>
+					<td><input id="ID" class="dataInfo" type="text" name="name_ID" placeholder="문자 or 숫자" required><br></td>
+					<td><input type="button" name="name_Check" value="중복체크"	onclick="checkID()" required></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input id="Password" class="dataInfo" type="text"
-						name="name_Password" placeholder="문자+숫자, 8자리 이상" required><br></td>
+					<td><input id="Password" class="dataInfo" type="text" name="name_Password" placeholder="문자+숫자, 8자리 이상" required><br></td>
 				</tr>
 				<tr>
 					<td>Password 확인</td>
-					<td><input id="PasswordCheck" class="dataInfo" type="text"
-						name="name_PasswordCheck" required><br></td>
+					<td><input id="PasswordCheck" class="dataInfo" type="text" name="name_PasswordCheck" required><br></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input id="Name" class="dataInfo" type="text"
-						name="name_Name" placeholder="문자열만 입력 가능" required><br></td>
+					<td><input id="Name" class="dataInfo" type="text" name="name_Name" placeholder="문자열만 입력 가능" required><br></td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
-					<td><input id="Telephone" class="dataInfo" type="tel"
-						name="name_Telephone" placeholder="ex)01(0)-000(0)-0000" required><br></td>
+					<td><input id="Telephone" class="dataInfo" type="tel" name="name_Telephone" placeholder="ex)01(0)-000(0)-0000" required><br></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input id="Email" class="dataInfo" type="email"
-						name="name_Email" required><br></td>
+					<td><input id="Email" class="dataInfo" type="email" name="name_Email" required><br></td>
 				</tr>
 				<tr>
 					<td>생년월일</td>
-					<td><input id="Birth" class="dataInfo" type="date"
-						name="name_Birth" required><br></td>
+					<td><input id="Birth" class="dataInfo" type="date" name="name_Birth" required><br></td>
 				</tr>
 			</tbody>
 			<tfoot>
-				<td><input type="button" name="name_Check" value="제출하기"
-					onclick="checkSubmit()" required></td>
+				<td><input type="button" name="name_Check" value="제출하기" onclick="checkSubmit()" required></td>
 			</tfoot>
 		</table>
 
@@ -94,21 +85,6 @@
 				}
 			})
 		}
-// 		$('#ID').blur(function() {
-// 			var checkName = /^[a-zA-Z0-9_]{6,10}$/;
-// 			if (!checkName.test($('#ID').val())) { // 아이디 확인
-// 				alert("아이디 형식을 지켜주세요.");
-// 				document.getElementById("ID").value = null;
-// 			}
-// 		});
-// 		$('#Password').blur(function() {
-// 			var checkName = /^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$/;
-// 			alert(checkName.test($('#Password').val()));
-// 			if (!checkName.test($('#Password').val())) { // 패스워드 확인
-// 				alert("비밀번호 형식을 지켜주세요.");
-// 				document.getElementById("Password").value = null;
-// 			}
-// 		});
 		$('#PasswordCheck').blur(function() {
 			if (document.getElementById("Password").value != document.getElementById("PasswordCheck").value) {
 				alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
@@ -131,19 +107,19 @@
 			}
 		});
 		$('#Email').blur(function() {
-			var checkName = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$/;
+			var checkName = /^[a-z가-힣]+$/;
 			if (!checkName.test($('#Email').val())) { // 이메일 확인
 				alert("이메일 형식을 지켜주세요.");
 				document.getElementById("Email").value = null;
 			}
 		});
-		$('#Birth').blur(function() {
-			var checkName = /^[a-z가-힣]+$/;
-			if (!checkName.test($('#Birth').val())) { // 생년월일 확인
-				alert("생년월일 형식을 지켜주세요.");
-				document.getElementById("Birth").value = null;
-			}
-		});
+// 		$('#Birth').blur(function() {
+// 			var checkName = /^[a-z가-힣]+$/;
+// 			if (!checkName.test($('#Birth').val())) { // 생년월일 확인
+// 				alert("생년월일 형식을 지켜주세요.");
+// 				document.getElementById("Birth").value = null;
+// 			}
+// 		});
 
 		function checkSubmit() { // 제출하기
 			$.ajax({
@@ -163,7 +139,7 @@
 					if (response == "checkCheckbox") {
 						alert("약관에 동의해주시기 바랍니다.!!");
 					} else if (response == "checkPassword") {
-						alert("페스워드 형식을 지켜주세요.");
+						alert("패스워드 형식을 지켜주세요.");
 					} else if (response == "checkPasswordCheck") {
 						alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
 						document.getElementById("Password").value = null;

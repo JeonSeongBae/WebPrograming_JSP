@@ -23,8 +23,8 @@
 		Matcher matcher = pattern.matcher(ID);
 		if (matcher.find()) { // ID 형식을 확인함
 			answer = "POSSIBLE";
-			for (int i = 0; i < files.length; i++) {
-				if (files[i].getName().equals(ID + ".txt")) {
+			for (int i = 0; files != null && i < files.length; i++) {
+				if (files[i].getName().equals(ID + ".txt")) { // 중복된 아이디가 있는지 확인
 					answer = "DUPLICATION";
 					break;
 				}
