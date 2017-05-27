@@ -61,8 +61,8 @@
 				<td><input type="button" name="name_Check" value="제출하기" onclick="checkSubmit()" required></td>
 			</tfoot>
 		</table>
-
 	</form>
+	
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript">
@@ -106,18 +106,11 @@
 				document.getElementById("Telephone").value = null;
 			}
 		});
-		$('#Email').blur(function() {
-			var checkName = /^[a-z가-힣]+$/;
-			if (!checkName.test($('#Email').val())) { // 이메일 확인
-				alert("이메일 형식을 지켜주세요.");
-				document.getElementById("Email").value = null;
-			}
-		});
-// 		$('#Birth').blur(function() {
+// 		$('#Email').blur(function() {
 // 			var checkName = /^[a-z가-힣]+$/;
-// 			if (!checkName.test($('#Birth').val())) { // 생년월일 확인
-// 				alert("생년월일 형식을 지켜주세요.");
-// 				document.getElementById("Birth").value = null;
+// 			if (!checkName.test($('#Email').val())) { // 이메일 확인
+// 				alert("이메일 형식을 지켜주세요.");
+// 				document.getElementById("Email").value = null;
 // 			}
 // 		});
 
@@ -184,12 +177,19 @@
 				success : function(response) {
 					if (response == "SUCESS") {
 						alert("계정을 생성하였습니다. 이메일 인증을 받으세요.");
+						send_email();
 					} else {
 						alert("계정생성에 실패하였습니다.");
 					}
 				}
 			})
 		}
+		function send_email() {
+			alert(document.getElementById("Email").value);
+			location.href = "http://localhost:8080/HW1/send_email.jsp?ID="+document.getElementById("ID").value + "&Email=" + document.getElementById("Email").value;
+		}
 	</script>
+	
 </body>
+
 </html>

@@ -6,14 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script>
-	function send_email() {
-		document.send_form.submit();
-	}
-</script>
+
 <title>Insert title here</title>
 </head>
-<body onload="send_email()">
+<body>
 	<%
 		// 각각의 정보를 받아옴
 		String answer = "";
@@ -50,12 +46,6 @@
 			printWriter.close();
 		}
 	%>
-	<div>
-		<form method="POST" name="send_form" action="send_email.jsp">
-			<input type="hidden" name="id" value="<%=ID%>"></input>
-			<input type="hidden" name="email" value="<%=Email%>"></input>
-		</form>
-		<span>loading...</span>
-	</div>
+
 </body>
 </html>
