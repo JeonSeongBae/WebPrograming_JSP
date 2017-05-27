@@ -13,7 +13,7 @@
 			<thead></thead>
 			<tbody>
 				<tr>
-					<td>2017 웹 프로그래밍 HW1<br> 본 약관은 "HW1-회원가입"서비스를 이용하기 위해서는
+					<td>2017 웹 프로그래밍 HW1<br>본 약관은 "HW1-회원가입"서비스를 이용하기 위해서는
 						회원등록을 완료 해야합니다.
 					</td>
 				</tr>
@@ -94,21 +94,21 @@
 				}
 			})
 		}
-		$('#ID').blur(function() {
-			var checkName = /^[a-zA-Z0-9_]{6,10}$/;
-			if (!checkName.test($('#ID').val())) { // 아이디 확인
-				alert("아이디 형식을 지켜주세요.");
-				document.getElementById("ID").value = null;
-			}
-		});
-		$('#Password').blur(function() {
-			var checkName = /^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$/;
-			alert(checkName.test($('#Password').val()));
-			if (!checkName.test($('#Password').val())) { // 패스워드 확인
-				alert("비밀번호 형식을 지켜주세요.");
-				document.getElementById("Password").value = null;
-			}
-		});
+// 		$('#ID').blur(function() {
+// 			var checkName = /^[a-zA-Z0-9_]{6,10}$/;
+// 			if (!checkName.test($('#ID').val())) { // 아이디 확인
+// 				alert("아이디 형식을 지켜주세요.");
+// 				document.getElementById("ID").value = null;
+// 			}
+// 		});
+// 		$('#Password').blur(function() {
+// 			var checkName = /^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$/;
+// 			alert(checkName.test($('#Password').val()));
+// 			if (!checkName.test($('#Password').val())) { // 패스워드 확인
+// 				alert("비밀번호 형식을 지켜주세요.");
+// 				document.getElementById("Password").value = null;
+// 			}
+// 		});
 		$('#PasswordCheck').blur(function() {
 			if (document.getElementById("Password").value != document.getElementById("PasswordCheck").value) {
 				alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
@@ -162,21 +162,13 @@
 				success : function(response) {
 					if (response == "checkCheckbox") {
 						alert("약관에 동의해주시기 바랍니다.!!");
-					} else if (response == "checkBirth") {
-						alert("생년월일 형식을 지켜주세요.");
-						document.getElementById("Birth").value = null;
-					} else if (response == "checkEmail") {
-						alert("이메일 형식을 지켜주세요.");
-						document.getElementById("Email").value = null;
-					} else if (response == "checkTelephone") {
-						alert("전화번호 형식을 지켜주세요.");
-						document.getElementById("Telephone").value = null;
 					} else if (response == "checkPassword") {
 						alert("페스워드 형식을 지켜주세요.");
 					} else if (response == "checkPasswordCheck") {
 						alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
 						document.getElementById("Password").value = null;
 						document.getElementById("PasswordCheck").value = null;
+						document.getElementById("Password").value.focus();
 					} else if (response == "checkID") {
 						alert("아이디 형식을 지켜주세요.");
 					} else if (response == "blankEmail") {

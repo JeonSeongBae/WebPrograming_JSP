@@ -13,7 +13,6 @@
 <body>
 	<%
 		String answer = ""; // 초기값 == 형식에 맞지 않음
-		PrintWriter printWriter;
 		String Checkbox = request.getParameter("Checkbox");
 		String ID = request.getParameter("ID");
 		String Password = request.getParameter("Password");
@@ -27,28 +26,28 @@
 
 		String checkID = "^[a-zA-Z0-9_]{6,10}$";
 		String checkPassword = "^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$";
-		String checkName = "^[a-z가-힣]+$";
-		String checkTelephone = "^01([0|1|6|7|8]?)-?([0-9]{3,4})-?([0-9]{4})$";
-		String checkEmail = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+// 		String checkName = "^[a-z가-힣]+$";
+// 		String checkTelephone = "^01([0|1|6|7|8]?)-?([0-9]{3,4})-?([0-9]{4})$";
+// 		String checkEmail = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
 
 		// 		System.out.println("checkBox: " + Checkbox);
 
-		pattern = Pattern.compile(checkEmail);
-		matcher = pattern.matcher(Email);
-		if (!matcher.find()) { // 1. 이메일 확인
-			answer = "checkEmail";
-		}
-		pattern = Pattern.compile(checkTelephone);
-		matcher = pattern.matcher(Telephone);
-		if (!matcher.find()) { // 2. 전화번호 확인
-			answer = "checkTelephone";
-		}
-		pattern = Pattern.compile(checkName);
-		matcher = pattern.matcher(Name);
-		if (!matcher.find()) { // 이름 확인
-			answer = "checkName";
-		}
-		// 		System.out.println(matcher);
+// 		pattern = Pattern.compile(checkEmail);
+// 		matcher = pattern.matcher(Email);
+// 		if (!matcher.find()) { // 1. 이메일 확인
+// 			answer = "checkEmail";
+// 		}
+// 		pattern = Pattern.compile(checkTelephone);
+// 		matcher = pattern.matcher(Telephone);
+// 		if (!matcher.find()) { // 2. 전화번호 확인
+// 			answer = "checkTelephone";
+// 		}
+// 		pattern = Pattern.compile(checkName);
+// 		matcher = pattern.matcher(Name);
+// 		if (!matcher.find()) { // 이름 확인
+// 			answer = "checkName";
+// 		}
+// 		// 		System.out.println(matcher);
 		pattern = Pattern.compile(checkPassword);
 		matcher = pattern.matcher(Password);
 		if (!matcher.find()) { // 비밀번호 확인
@@ -81,8 +80,8 @@
 		} else if (Birth == "") {
 			answer = "blankBirth";
 		}
-		System.out.println("answer: " + answer);
-		printWriter = response.getWriter();
+// 		System.out.println("answer: " + answer);
+		PrintWriter printWriter = response.getWriter();
 		printWriter.print(answer);
 		printWriter.flush();
 		printWriter.close();
