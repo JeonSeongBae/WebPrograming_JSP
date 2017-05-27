@@ -94,6 +94,28 @@
 				}
 			})
 		}
+		$('#ID').blur(function() {
+			var checkName = /^[a-zA-Z0-9_]{6,10}$/;
+			if (!checkName.test($('#ID').val())) { // 아이디 확인
+				alert("아이디 형식을 지켜주세요.");
+				document.getElementById("ID").value = null;
+			}
+		});
+		$('#Password').blur(function() {
+			var checkName = /^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$/;
+			alert(checkName.test($('#Password').val()));
+			if (!checkName.test($('#Password').val())) { // 패스워드 확인
+				alert("비밀번호 형식을 지켜주세요.");
+				document.getElementById("Password").value = null;
+			}
+		});
+		$('#PasswordCheck').blur(function() {
+			if (document.getElementById("Password").value != document.getElementById("PasswordCheck").value) {
+				alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
+				document.getElementById("Password").value = null;
+				document.getElementById("PasswordCheck").value = null;
+			}
+		});
 		$('#Name').blur(function() {
 			var checkName = /^[a-z가-힣]+$/;
 			if (!checkName.test($('#Name').val())) { // 이름 확인
@@ -102,14 +124,14 @@
 			}
 		});
 		$('#Telephone').blur(function() {
-			var checkName = /^[a-z가-힣]+$/;
+			var checkName = /^01([0|1|6|7|8]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 			if (!checkName.test($('#Telephone').val())) { // 전화번호 확인
 				alert("전화번호 형식을 지켜주세요.");
 				document.getElementById("Telephone").value = null;
 			}
 		});
 		$('#Email').blur(function() {
-			var checkName = /^[a-z가-힣]+$/;
+			var checkName = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$/;
 			if (!checkName.test($('#Email').val())) { // 이메일 확인
 				alert("이메일 형식을 지켜주세요.");
 				document.getElementById("Email").value = null;
@@ -125,60 +147,58 @@
 
 		function checkSubmit() { // 제출하기
 			$.ajax({
-						type : 'post',
-						url : 'http://localhost:8080/HW1/checkSubmit.jsp',
-						data : {
-							Checkbox : document.getElementById("Checkbox").checked,
-							ID : document.getElementById("ID").value,
-							Password : document.getElementById("Password").value,
-							PasswordCheck : document
-									.getElementById("PasswordCheck").value,
-							Name : document.getElementById("Name").value,
-							Telephone : document.getElementById("Telephone").value,
-							Email : document.getElementById("Email").value,
-							Birth : document.getElementById("Birth").value
-						},
-						success : function(response) {
-							if (response == "checkCheckbox") {
-								alert("약관에 동의해주시기 바랍니다.!!");
-							} else if (response == "checkBirth") {
-								alert("생년월일 형식을 지켜주세요.");
-								document.getElementById("Birth").value = null;
-							} else if (response == "checkEmail") {
-								alert("checkEmail");
-								document.getElementById("Email").value = null;
-							} else if (response == "checkTelephone") {
-								alert("전화번호 형식을 지켜주세요.");
-								document.getElementById("Telephone").value = null;
-							}else if (response == "checkPassword") {
-								alert("checkPassword");
-							} else if (response == "checkPasswordCheck") {
-								alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
-								document.getElementById("Password").value = null;
-								document.getElementById("PasswordCheck").value = null;
-							} else if (response == "checkID") {
-								alert("checkID");
-							} else if (response == "blankEmail") {
-								alert("Email값이 없습니다.");
-							} else if (response == "blankBirth") {
-								alert("Birth값이 없습니다.");
-							} else if (response == "blankTelephone") {
-								alert("전화번호값이 없습니다.");
-							} else if (response == "blankName") {
-								alert("이름값이 없습니다.");
-							} else if (response == "blankPassword") {
-								alert("비밀번호값이 없습니다.");
-							} else if (response == "blankcheckPasswordCheck") {
-								alert("비밀번호 확인값이 없습니다.");
-							} else if (response == "blankID") {
-								alert("ID값이 없습니다.");
-							} else {
-								createMember();
-								window
-										.open('http://localhost:8080/HW1/loginPage.jsp')
-							}
-						}
-					})
+				type : 'post',
+				url : 'http://localhost:8080/HW1/checkSubmit.jsp',
+				data : {
+					Checkbox : document.getElementById("Checkbox").checked,
+					ID : document.getElementById("ID").value,
+					Password : document.getElementById("Password").value,
+					PasswordCheck : document.getElementById("PasswordCheck").value,
+					Name : document.getElementById("Name").value,
+					Telephone : document.getElementById("Telephone").value,
+					Email : document.getElementById("Email").value,
+					Birth : document.getElementById("Birth").value
+				},
+				success : function(response) {
+					if (response == "checkCheckbox") {
+						alert("약관에 동의해주시기 바랍니다.!!");
+					} else if (response == "checkBirth") {
+						alert("생년월일 형식을 지켜주세요.");
+						document.getElementById("Birth").value = null;
+					} else if (response == "checkEmail") {
+						alert("이메일 형식을 지켜주세요.");
+						document.getElementById("Email").value = null;
+					} else if (response == "checkTelephone") {
+						alert("전화번호 형식을 지켜주세요.");
+						document.getElementById("Telephone").value = null;
+					} else if (response == "checkPassword") {
+						alert("페스워드 형식을 지켜주세요.");
+					} else if (response == "checkPasswordCheck") {
+						alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
+						document.getElementById("Password").value = null;
+						document.getElementById("PasswordCheck").value = null;
+					} else if (response == "checkID") {
+						alert("아이디 형식을 지켜주세요.");
+					} else if (response == "blankEmail") {
+						alert("Email값이 없습니다.");
+					} else if (response == "blankBirth") {
+						alert("Birth값이 없습니다.");
+					} else if (response == "blankTelephone") {
+						alert("전화번호값이 없습니다.");
+					} else if (response == "blankName") {
+						alert("이름값이 없습니다.");
+					} else if (response == "blankPassword") {
+						alert("비밀번호값이 없습니다.");
+					} else if (response == "blankcheckPasswordCheck") {
+						alert("비밀번호 확인값이 없습니다.");
+					} else if (response == "blankID") {
+						alert("ID값이 없습니다.");
+					} else {
+						createMember();
+						window.open('http://localhost:8080/HW1/loginPage.jsp')
+					}
+				}
+			})
 		}
 		function createMember() { // 계정생성
 			$.ajax({
@@ -195,10 +215,9 @@
 				},
 				success : function(response) {
 					if (response == "SUCESS") {
-						alert("SUCESS");
-
-					} else if (response == "FAIL") {
-						alert("FAIL");
+						alert("계정을 생성하였습니다. 이메일 인증을 받으세요.");
+					} else {
+						alert("계정생성에 실패하였습니다.");
 					}
 				}
 			})

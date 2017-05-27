@@ -26,7 +26,6 @@
 		Matcher matcher = null;
 
 		String checkID = "^[a-zA-Z0-9_]{6,10}$";
-// 		String checkPassword = "^[a-zA-Z0-9_]{6,10}$";
 		String checkPassword = "^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$";
 		String checkName = "^[a-z가-힣]+$";
 		String checkTelephone = "^01([0|1|6|7|8]?)-?([0-9]{3,4})-?([0-9]{4})$";
