@@ -16,7 +16,6 @@
 					success : function(response) {
 						if (response == "MATCH") {
 							alert("MATCH");
-// 							openPage();
 							location.href('C:\\Users\\user\\Desktop\\웹프로그래밍\\TP1_201302476_전성배\\TP1_HTML_SKELETON.html')
 						} else if (response == "NOMATCH") {
 							alert("비밀번호가 일치하지 않습니다.");
@@ -25,9 +24,6 @@
 						}
 					}
 				})
-	}
-	function openPage(){
-		location.href='C:\\Users\\user\\Desktop\\웹프로그래밍\\TP1_201302476_전성배\\TP1_HTML_SKELETON.html'
 	}
 </script>
 <head>

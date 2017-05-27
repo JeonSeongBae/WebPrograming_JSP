@@ -26,28 +26,6 @@
 
 		String checkID = "^[a-zA-Z0-9_]{6,10}$";
 		String checkPassword = "^((?=.*[a-z])+(?=.*[A-Z])+(?=.*\\d)+(?=.*\\W)).{6,20}$";
-// 		String checkName = "^[a-z가-힣]+$";
-// 		String checkTelephone = "^01([0|1|6|7|8]?)-?([0-9]{3,4})-?([0-9]{4})$";
-// 		String checkEmail = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
-
-		// 		System.out.println("checkBox: " + Checkbox);
-
-// 		pattern = Pattern.compile(checkEmail);
-// 		matcher = pattern.matcher(Email);
-// 		if (!matcher.find()) { // 1. 이메일 확인
-// 			answer = "checkEmail";
-// 		}
-// 		pattern = Pattern.compile(checkTelephone);
-// 		matcher = pattern.matcher(Telephone);
-// 		if (!matcher.find()) { // 2. 전화번호 확인
-// 			answer = "checkTelephone";
-// 		}
-// 		pattern = Pattern.compile(checkName);
-// 		matcher = pattern.matcher(Name);
-// 		if (!matcher.find()) { // 이름 확인
-// 			answer = "checkName";
-// 		}
-// 		// 		System.out.println(matcher);
 		pattern = Pattern.compile(checkPassword);
 		matcher = pattern.matcher(Password);
 		if (!matcher.find()) { // 비밀번호 확인
@@ -64,8 +42,7 @@
 		if (Checkbox.equals("false")) { // 약관 동의 확인
 			answer = "checkCheckbox";
 		}
-		System.out.println(Birth);
-		if (ID == "") {
+		if (ID == "") { // 빈칸이 있는지 확인
 			answer = "blankID";
 		} else if (Password == "") {
 			answer = "blankPassword";
@@ -80,7 +57,6 @@
 		} else if (Birth == "") {
 			answer = "blankBirth";
 		}
-// 		System.out.println("answer: " + answer);
 		PrintWriter printWriter = response.getWriter();
 		printWriter.print(answer);
 		printWriter.flush();
