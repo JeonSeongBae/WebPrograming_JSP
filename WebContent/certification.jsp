@@ -25,7 +25,7 @@
 			for (int i = 0; i < files.length; i++) {
 				if (files[i].getName().equals(ID + ".txt")) {//그 디렉토리에 있는 파일 중 전달받은 id와 같은 이름의 파일이 있을 경우
 					files[i].renameTo(
-							new File(application.getRealPath("/WEB-INF/IDDataBase_certification/" + ID + ".txt")));
+							new File(application.getRealPath("WEB-INF\\IDDataBase_certification\\" + ID + ".txt")));
 				}
 			}
 

@@ -6,20 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>HW1_JSP_201302476_전성배</title>
 </head>
-
 <body>
 	<form action="" id="form_info">
 		<table>
 			<thead></thead>
 			<tbody>
 				<tr>
-					<td>2017 웹 프로그래밍 HW1<br>본 약관은 "HW1-회원가입"서비스를 이용하기 위해서는
-						회원등록을 완료 해야합니다.
-					</td>
+					<td>2017 웹 프로그래밍 HW1<br>본 약관은 "HW1-회원가입"서비스를 이용하기 위해서는 회원등록을 완료 해야합니다.</td>
 				</tr>
 				<tr>
-					<th><input id="Checkbox" type="checkbox" name="agree">약관에
-						동의합니다.</th>
+					<th><input id="Checkbox" type="checkbox" name="agree">약관에 동의합니다.</th>
 				</tr>
 			</tbody>
 			<tfoot></tfoot>
@@ -86,7 +82,7 @@
 			})
 		}
 		$('#PasswordCheck').blur(function() {
-			if ((document.getElementById("Password").value != document.getElementById("PasswordCheck").value)&&(document.getElementById("Password").value!=null)) {
+			if ((document.getElementById("Password").value != document.getElementById("PasswordCheck").value)&&(document.getElementById("Password").value!="")) {
 				alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
 				document.getElementById("Password").value = null;
 				document.getElementById("PasswordCheck").value = null;
