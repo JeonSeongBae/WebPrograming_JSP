@@ -155,7 +155,7 @@
 						alert("중복체크를 해주세요.");
 					} else {
 						createMember();
-						window.open('http://localhost:8080/HW1/loginPage.jsp')
+						location.href = 'http://localhost:8080/HW1/loginPage.jsp';
 					}
 				}
 			})
