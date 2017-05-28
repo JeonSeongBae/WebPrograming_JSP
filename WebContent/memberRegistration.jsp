@@ -6,20 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>HW1_JSP_201302476_전성배</title>
 </head>
-
 <body>
 	<form action="" id="form_info">
 		<table>
 			<thead></thead>
 			<tbody>
 				<tr>
-					<td>2017 웹 프로그래밍 HW1<br>본 약관은 "HW1-회원가입"서비스를 이용하기 위해서는
-						회원등록을 완료 해야합니다.
-					</td>
+					<td>2017 웹 프로그래밍 HW1<br>본 약관은 "HW1-회원가입"서비스를 이용하기 위해서는 회원등록을 완료 해야합니다.</td>
 				</tr>
 				<tr>
-					<th><input id="Checkbox" type="checkbox" name="agree">약관에
-						동의합니다.</th>
+					<th><input id="Checkbox" type="checkbox" name="agree">약관에 동의합니다.</th>
 				</tr>
 			</tbody>
 			<tfoot></tfoot>
@@ -37,7 +33,7 @@
 					<td><input id="Password" class="dataInfo" type="text" name="name_Password" placeholder="문자+숫자, 8자리 이상" required><br></td>
 				</tr>
 				<tr>
-					<td>Password 확인</td>
+					<td>Password<br>확인</td>
 					<td><input id="PasswordCheck" class="dataInfo" type="text" name="name_PasswordCheck" required><br></td>
 				</tr>
 				<tr>
@@ -86,7 +82,7 @@
 			})
 		}
 		$('#PasswordCheck').blur(function() {
-			if ((document.getElementById("Password").value != document.getElementById("PasswordCheck").value)&&(document.getElementById("Password").value!=null)) {
+			if ((document.getElementById("Password").value != document.getElementById("PasswordCheck").value)&&(document.getElementById("Password").value!="")) {
 				alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
 				document.getElementById("Password").value = null;
 				document.getElementById("PasswordCheck").value = null;
@@ -107,7 +103,7 @@
 			}
 		});
 		$('#Email').blur(function() {
-			var checkName = /^[a-z가-힣]+@+[a-z가-힣]+.+[a-z가-힣]+$/;
+			var checkName = /^[a-z가-힣0-9]+@+[a-z가-힣0-9]+.+[a-z가-힣0-9]+$/;
 			if (!(checkName.test($('#Email').val()))&&(document.getElementById("Email").value!="")) { // 이메일 확인
 				alert("이메일 형식을 지켜주세요.");
 				document.getElementById("Email").value = null;
@@ -184,7 +180,6 @@
 			})
 		}
 		function send_email() {
-			alert(document.getElementById("Email").value);
 			location.href = "http://localhost:8080/HW1/send_email.jsp?ID="+document.getElementById("ID").value + "&Email=" + document.getElementById("Email").value;
 		}
 	</script>
