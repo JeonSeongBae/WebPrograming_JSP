@@ -6,27 +6,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>Insert title here</title>
+<title>회원 정보 생성</title>
 </head>
 <body>
 	<%
 		// 각각의 정보를 받아옴
-		String answer = "";
-		String ID = request.getParameter("ID");
-		String Password = request.getParameter("Password");
-		String saveFolder = "C:\\Users\\user\\Desktop" + "\\";
-		File targetDir = new File(saveFolder);
-		String Name = request.getParameter("Name");
-		String Telephone = request.getParameter("Telephone");
-		String Email = request.getParameter("Email");
-		String Birth = request.getParameter("Birth");
+		String answer = ""; // 초기화
+		String ID = request.getParameter("ID"); //ID값을 불러옴
+		String Password = request.getParameter("Password"); // Password값을 불러옴
+		String Name = request.getParameter("Name"); // 이름 값을 불러옴
+		String Telephone = request.getParameter("Telephone"); // 핸드폰 번호값을 불러옴
+		String Email = request.getParameter("Email"); // Eamil값을 불러옴
+		String Birth = request.getParameter("Birth"); // 생일 값을 불러옴
 		String fileName = ID + ".txt"; // 파일 이름
 		String filePath = application.getRealPath("WEB-INF/IDDataBase/")+"\\"; // 저장될 위치
 		try {
-			// 파일 생성
-			File newfile = new File(filePath);
-			newfile.createNewFile();
 			// 파일 쓰기
 			FileWriter fileWriter = new FileWriter(filePath + fileName);
 			fileWriter.write(Password + "\n");

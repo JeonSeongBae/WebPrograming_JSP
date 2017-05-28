@@ -14,7 +14,7 @@
 		String answer = ""; // 초기값 == 형식에 맞지 않음
 		String ID = request.getParameter("ID");
 
-		String filePath = application.getRealPath("IDDataBase//") + "\\";
+		String filePath = application.getRealPath("WEB-INF\\IDDataBase\\") + "\\";
 		File file = new File(filePath);
 		File[] files = file.listFiles();
 

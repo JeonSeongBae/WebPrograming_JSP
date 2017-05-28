@@ -86,7 +86,7 @@
 			})
 		}
 		$('#PasswordCheck').blur(function() {
-			if (document.getElementById("Password").value != document.getElementById("PasswordCheck").value) {
+			if ((document.getElementById("Password").value != document.getElementById("PasswordCheck").value)&&(document.getElementById("Password").value!=null)) {
 				alert("위에 입력한 비밀번호와 값이 다릅니다. 다시 입력해주세요.");
 				document.getElementById("Password").value = null;
 				document.getElementById("PasswordCheck").value = null;
@@ -94,26 +94,25 @@
 		});
 		$('#Name').blur(function() {
 			var checkName = /^[a-z가-힣]+$/;
-			if (!checkName.test($('#Name').val())) { // 이름 확인
+			if (!(checkName.test($('#Name').val()))&&(document.getElementById("Name").value!="")) { // 이름 확인
 				alert("이름은 문자열만 입력 가능합니다.");
 				document.getElementById("Name").value = null;
 			}
 		});
 		$('#Telephone').blur(function() {
-			var checkName = /^01([0|1|6|7|8]?)-?([0-9]{3,4})-?([0-9]{4})$/;
-			if (!checkName.test($('#Telephone').val())) { // 전화번호 확인
+			var checkName = /^01([0|1|6|7|8]?)-+([0-9]{3,4})-+([0-9]{4})$/;
+			if (!(checkName.test($('#Telephone').val()))&&(document.getElementById("Telephone").value!="")) { // 전화번호 확인
 				alert("전화번호 형식을 지켜주세요.");
 				document.getElementById("Telephone").value = null;
 			}
 		});
-// 		$('#Email').blur(function() {
-// 			var checkName = /^[a-z가-힣]+$/;
-// 			if (!checkName.test($('#Email').val())) { // 이메일 확인
-// 				alert("이메일 형식을 지켜주세요.");
-// 				document.getElementById("Email").value = null;
-// 			}
-// 		});
-
+		$('#Email').blur(function() {
+			var checkName = /^[a-z가-힣]+@+[a-z가-힣]+.+[a-z가-힣]+$/;
+			if (!(checkName.test($('#Email').val()))&&(document.getElementById("Email").value!="")) { // 이메일 확인
+				alert("이메일 형식을 지켜주세요.");
+				document.getElementById("Email").value = null;
+			}
+		});
 		function checkSubmit() { // 제출하기
 			$.ajax({
 				type : 'post',
@@ -156,7 +155,7 @@
 						alert("ID값이 없습니다.");
 					} else {
 						createMember();
-						location.href="http://localhost:8080/HW1/loginPage.jsp";
+						window.open('http://localhost:8080/HW1/loginPage.jsp')
 					}
 				}
 			})
@@ -177,14 +176,16 @@
 				success : function(response) {
 					if (response == "SUCESS") {
 						alert("계정을 생성하였습니다. 이메일 인증을 받으세요.");
-						alert("1");
-						location.href="http://localhost:8080/HW1/send_email.jsp?ID="+document.getElementById("ID").value + "&Email=" + document.getElementById("Email").value;
-						alert("2");
+						send_email();
 					} else {
 						alert("계정생성에 실패하였습니다.");
 					}
 				}
 			})
+		}
+		function send_email() {
+			alert(document.getElementById("Email").value);
+			location.href = "http://localhost:8080/HW1/send_email.jsp?ID="+document.getElementById("ID").value + "&Email=" + document.getElementById("Email").value;
 		}
 	</script>
 </body>
