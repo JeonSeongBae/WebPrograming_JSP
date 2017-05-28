@@ -153,8 +153,7 @@
 						alert("ID값이 없습니다.");
 					} else if (dupli != true) {
 						alert("중복체크를 해주세요.");
-					} 
-					else {
+					} else {
 						createMember();
 						window.open('http://localhost:8080/HW1/loginPage.jsp')
 					}
