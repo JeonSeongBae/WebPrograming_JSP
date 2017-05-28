@@ -7,8 +7,7 @@
 <title>HW1_JSP_201302476_전성배</title>
 </head>
 <body>
-	<form action="" id="form_info">
-		<table>
+		<table border="2">
 			<thead></thead>
 			<tbody>
 				<tr>
@@ -25,43 +24,45 @@
 			<tbody>
 				<tr>
 					<td>ID</td>
-					<td><input id="ID" class="dataInfo" type="text" name="name_ID" placeholder="문자 or 숫자" required><br></td>
-					<td><input type="button" name="name_Check" value="중복체크"	onclick="checkID()" required></td>
+					<td><input id="ID" type="text" placeholder="문자 or 숫자" required><br></td>
+					<td><input type="button" value="중복체크" onclick="checkID()" required></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input id="Password" class="dataInfo" type="text" name="name_Password" placeholder="문자+숫자, 8자리 이상" required><br></td>
+					<td><input id="Password" type="password" placeholder="문자+숫자, 8자리 이상" required><br></td>
 				</tr>
 				<tr>
 					<td>Password<br>확인</td>
-					<td><input id="PasswordCheck" class="dataInfo" type="text" name="name_PasswordCheck" required><br></td>
+					<td><input id="PasswordCheck" type="password" required><br></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input id="Name" class="dataInfo" type="text" name="name_Name" placeholder="문자열만 입력 가능" required><br></td>
+					<td><input id="Name" type="text" placeholder="문자열만 입력 가능" required><br></td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
-					<td><input id="Telephone" class="dataInfo" type="tel" name="name_Telephone" placeholder="ex)01(0)-000(0)-0000" required><br></td>
+					<td><input id="Telephone" type="tel" placeholder="ex)01(0)-000(0)-0000" required><br></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input id="Email" class="dataInfo" type="email" name="name_Email" required><br></td>
+					<td><input id="Email" type="email" required><br></td>
 				</tr>
 				<tr>
 					<td>생년월일</td>
-					<td><input id="Birth" class="dataInfo" type="date" name="name_Birth" required><br></td>
+					<td><input id="Birth" type="date" required><br></td>
 				</tr>
 			</tbody>
 			<tfoot>
-				<td><input type="button" name="name_Check" value="제출하기" onclick="checkSubmit()" required></td>
+				<tr>
+					<td></td>
+					<td><input type="button" value="제출하기" onclick="checkSubmit()" required></td>
+				</tr>
 			</tfoot>
 		</table>
-	</form>
-	
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript">
+		var dupli = false;
 		function checkID() { // 중복체크
 			$.ajax({
 				type : 'post',
@@ -72,6 +73,7 @@
 				success : function(response) {
 					if (response == "POSSIBLE") {
 						alert("사용 가능한 ID입니다.");
+						dupli = true;
 						document.getElementById("Password").focus();
 					} else if (response == "DUPLICATION") {
 						alert("이미 존재하는 ID입니다. 다른 ID를 입력해주세요.");
@@ -149,9 +151,11 @@
 						alert("비밀번호 확인값이 없습니다.");
 					} else if (response == "blankID") {
 						alert("ID값이 없습니다.");
+					} else if (dupli != true) {
+						alert("중복체크를 해주세요.");
 					} else {
 						createMember();
-						window.open('http://localhost:8080/HW1/loginPage.jsp')
+						location.href = 'http://localhost:8080/HW1/loginPage.jsp';
 					}
 				}
 			})
@@ -173,14 +177,13 @@
 					if (response == "SUCESS") {
 						alert("계정을 생성하였습니다. 이메일 인증을 받으세요.");
 						send_email();
-					} else {
+					} else
 						alert("계정생성에 실패하였습니다.");
-					}
 				}
 			})
 		}
 		function send_email() {
-			location.href = "http://localhost:8080/HW1/send_email.jsp?ID="+document.getElementById("ID").value + "&Email=" + document.getElementById("Email").value;
+			location.href = "http://localhost:8080/HW1/email.jsp?ID="+document.getElementById("ID").value + "&Email=" + document.getElementById("Email").value;
 		}
 	</script>
 </body>

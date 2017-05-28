@@ -15,7 +15,6 @@
 			},
 			success : function(response) {
 				if (response == "MATCH") {
-					alert("MATCH");
 					onePageEnter();
 				} else if (response == "NOMATCH") {
 					alert("비밀번호가 일치하지 않습니다.");
@@ -25,35 +24,39 @@
 			}
 		})
 	}
-	function onePageEnter(){
-		location.href='OnePageDir\\OnePage.html';
+	 // OnePage를 열어줌
+	function onePageEnter() {
+		location.href = 'OnePageDir\\OnePage.html';
 	}
 </script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>loginPage_로그인 페이지</title>
 </head>
 <body>
-	<form action="./checkLogin.jsp" id="form_info">
-		<table>
-			<thead>
-			</thead>
-			<tbody>
-				<tr>
-					<td>ID</td>
-					<td><input id="ID" class="eq_ptag" type="text" name="name_ID"
-						value=""><br></td>
-				</tr>
-				<tr>
-					<td>Password</td>
-					<td><input id="Password" class="eq_ptag" type="text"
-						name="name_Password"><br></td>
-				</tr>
-			</tbody>
-		</table>
-		<input type="button" name="name_Submit" value="로그인하기"
-			onclick="login()"> 
-			<input type="button" name="name_Submit"	value="회원가입" onclick="location.href='http://localhost:8080/HW1/memberRegistration.jsp'">
-	</form>
+	<table>
+		<thead>
+		</thead>
+		<tbody>
+			<!-- ID, Password 입력칸 -->
+			<tr>
+				<td>ID</td>
+				<td><input id="ID" type="text"><br></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input id="Password" type="password"><br></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<!-- 버튼목록 -->
+			<tr>
+				<td><input type="button" value="로그인하기"
+					onclick="login()"></td>
+				<td><input type="button" value="회원가입"
+					onclick="location.href='http://localhost:8080/HW1/memberRegistration.jsp'"></td>
+			</tr>
+		</tfoot>
+	</table>
 </body>
 </html>
