@@ -26,7 +26,7 @@
 		})
 	}
 	function onePageEnter(){
-		location.href="OnePageDir\\OnePage.html";
+		location.href='OnePageDir\\OnePage.html';
 	}
 </script>
 <head>
@@ -52,9 +52,8 @@
 			</tbody>
 		</table>
 		<input type="button" name="name_Submit" value="로그인하기"
-			onclick="login()"> <input type="button" name="name_Submit"
-			value="회원가입"
-			onclick="location.href('http://localhost:8080/HW1/memberRegistration.jsp')">
+			onclick="login()"> 
+			<input type="button" name="name_Submit"	value="회원가입" onclick="location.href='http://localhost:8080/HW1/memberRegistration.jsp'">
 	</form>
 </body>
 </html>

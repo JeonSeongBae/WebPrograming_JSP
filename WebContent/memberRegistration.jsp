@@ -33,7 +33,7 @@
 					<td><input id="Password" class="dataInfo" type="text" name="name_Password" placeholder="문자+숫자, 8자리 이상" required><br></td>
 				</tr>
 				<tr>
-					<td>Password 확인</td>
+					<td>Password<br>확인</td>
 					<td><input id="PasswordCheck" class="dataInfo" type="text" name="name_PasswordCheck" required><br></td>
 				</tr>
 				<tr>
@@ -103,7 +103,7 @@
 			}
 		});
 		$('#Email').blur(function() {
-			var checkName = /^[a-z가-힣]+@+[a-z가-힣]+.+[a-z가-힣]+$/;
+			var checkName = /^[a-z가-힣0-9]+@+[a-z가-힣0-9]+.+[a-z가-힣0-9]+$/;
 			if (!(checkName.test($('#Email').val()))&&(document.getElementById("Email").value!="")) { // 이메일 확인
 				alert("이메일 형식을 지켜주세요.");
 				document.getElementById("Email").value = null;
@@ -180,7 +180,6 @@
 			})
 		}
 		function send_email() {
-			alert(document.getElementById("Email").value);
 			location.href = "http://localhost:8080/HW1/send_email.jsp?ID="+document.getElementById("ID").value + "&Email=" + document.getElementById("Email").value;
 		}
 	</script>

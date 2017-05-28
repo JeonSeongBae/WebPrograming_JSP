@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="javax.mail.Transport"%>
 <%@page import="javax.mail.Message"%>
 <%@page import="javax.mail.Address"%>
@@ -17,30 +18,28 @@
 </head>
 <body>
 	<%
-		System.out.println(request.getParameter("ID").toString());
-			System.out.println(request.getParameter("Email").toString());
-			String ID = request.getParameter("ID").toString();
-			String Email = request.getParameter("Email").toString();
+		String ID = request.getParameter("ID").toString();
+		String Email = request.getParameter("Email").toString();
 
-			try {
-		String sbj = "2017 웹프로그래밍(HW1) 회원가입을 위해 인증을 진행해주세요.";
-		String src = "tjdqo007@gmail.com"; // 보내는사람 email주소
-		String link = "http://localhost:8080/HW1/certification.jsp?ID=" + ID; // 인증을 완료할 jsp주소
-		String msg = "<div><p>아래 [인증하기] 버튼을 클릭하면 회원가입이 완료됩니다.</p><br>";
-		msg += "<form method='POST' action='" + link + "'><input type='submit' value='인증하기'></form></div>";
-		Properties pro = new Properties();
-		pro.put("mail.smtp.user", Email);
-		pro.put("mail.smtp.host", "smtp.gmail.com");
-		pro.put("mail.smtp.port", "465");
-		pro.put("mail.smtp.starttls.enable", "true");
-		pro.put("mail.smtp.auth", "true");
-		pro.put("mail.smtp.debug", "true");
-		pro.put("mail.smtp.socketFactory.port", "465");
-		pro.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		pro.put("mail.smtp.socketFactory.fallback", "false"); // SMTP 서버에 접속하기 위한 정보들
 		try {
-			Session mailSession = Session.getInstance(pro, new javax.mail.Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
+			String sbj = "2017 웹프로그래밍(HW1) 회원가입을 위해 인증을 진행해주세요.";
+			String src = "tjdqo007@gmail.com"; // 보내는사람 email주소
+			String link = "http://localhost:8080/HW1/certification.jsp?ID=" + ID; // 인증을 완료할 jsp주소
+			String msg = "<div><p>아래 [인증하기] 버튼을 클릭하면 회원가입이 완료됩니다.</p><br>";
+			msg += "<form method='POST' action='" + link + "'><input type='submit' value='인증하기'></form></div>";
+			Properties pro = new Properties();
+			pro.put("mail.smtp.user", Email);
+			pro.put("mail.smtp.host", "smtp.gmail.com");
+			pro.put("mail.smtp.port", "465");
+			pro.put("mail.smtp.starttls.enable", "true");
+			pro.put("mail.smtp.auth", "true");
+			pro.put("mail.smtp.debug", "true");
+			pro.put("mail.smtp.socketFactory.port", "465");
+			pro.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			pro.put("mail.smtp.socketFactory.fallback", "false"); // SMTP 서버에 접속하기 위한 정보들
+			try {
+				Session mailSession = Session.getInstance(pro, new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
 						String GmailID = "tjdqo007@gmail.com";
 						String GmailPassword = "tjdqo1234";
 						return new PasswordAuthentication(GmailID, GmailPassword); // gmail 메일 ID / PWD 
@@ -67,7 +66,8 @@
 			회원가입이 완료됩니다.
 		</p>
 		<br>
-		<button onclick="location.href='loginPage.jsp'" value="로그인 페이지 이동">로그인 페이지</button>
+		<button onclick="location.href='loginPage.jsp'" value="로그인 페이지 이동">로그인
+			페이지</button>
 	</div>
 </body>
 </html>
