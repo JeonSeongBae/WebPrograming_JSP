@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>checkSubmit_제출하기 확인</title>
 </head>
 <body>
 	<%

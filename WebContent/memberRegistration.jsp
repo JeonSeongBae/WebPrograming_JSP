@@ -62,6 +62,7 @@
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript">
+		var dupli = false;
 		function checkID() { // 중복체크
 			$.ajax({
 				type : 'post',
@@ -72,6 +73,7 @@
 				success : function(response) {
 					if (response == "POSSIBLE") {
 						alert("사용 가능한 ID입니다.");
+						dupli = true;
 						document.getElementById("Password").focus();
 					} else if (response == "DUPLICATION") {
 						alert("이미 존재하는 ID입니다. 다른 ID를 입력해주세요.");
@@ -149,7 +151,10 @@
 						alert("비밀번호 확인값이 없습니다.");
 					} else if (response == "blankID") {
 						alert("ID값이 없습니다.");
-					} else {
+					} else if (dupli != true) {
+						alert("중복체크를 해주세요.");
+					} 
+					else {
 						createMember();
 						window.open('http://localhost:8080/HW1/loginPage.jsp')
 					}
